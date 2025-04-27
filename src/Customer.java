@@ -17,9 +17,8 @@ class Customer {
     public String statement() {
         double totalAmount = 0;
         int frequentRenterPoints = 0;
-        Enumeration enum_rentals = rentals.elements();	    
-        String result = "Rental Record for " + this.getName() + "\n";
-        result += "\t" + "Title" + "\t" + "\t" + "Days" + "\t" + "Amount" + "\n";
+        Enumeration enum_rentals = rentals.elements();
+        String result = statementHeader();
 
         while (enum_rentals.hasMoreElements()) {
             double thisAmount = 0;
@@ -38,6 +37,12 @@ class Customer {
         //add footer lines
         result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
         result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points";
+        return result;
+    }
+
+    private String statementHeader() {
+        String result = "Rental Record for " + this.getName() + "\n";
+        result += "\t" + "Title" + "\t" + "\t" + "Days" + "\t" + "Amount" + "\n";
         return result;
     }
 
